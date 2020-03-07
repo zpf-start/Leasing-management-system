@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Leasingmanagementsystemservice" />
+        <module name="Leasingmanagementsystemdomain" />
+        <module name="Leasingmanagementsystemdao" />
+        <module name="Leasing-management-system-domain" />
+        <module name="Leasingmanagementsystemutils" />
+        <module name="Leasing-management-system-dao" />
+        <module name="Leasing-management-system-web" />
+        <module name="Leasing-management-system-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
+  </component>
+</project>
