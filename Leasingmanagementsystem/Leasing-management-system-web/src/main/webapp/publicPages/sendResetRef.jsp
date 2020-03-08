@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: zpf
+  Date: 2020/3/8
+  Time: 20:43
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
@@ -23,11 +31,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/iCheck/square/blue.css">
 
     <style>
 
@@ -37,7 +45,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="all-admin-index.html"><b>租聘信息</b>后台管理系统</a>
+        <a href="${pageContext.servletContext.contextPath}/index.jsp"><b>租聘信息</b>后台管理系统</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -63,7 +71,7 @@
                 检查您的电子邮件以获取重置密码的链接。如果几分钟后仍未出现，请检查您的垃圾邮件文件夹。
             </div>
             <div class="form-group has-feedback">
-                <button type="submit" class="btn btn-primary btn-block btn-flat" onclick="location.href='login.html'">返回登录</button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat" onclick="location.href='${pageContext.servletContext.contextPath}/login.jsp'">返回登录</button>
             </div>
         </div>
     </div>
@@ -74,8 +82,8 @@
 <!-- jQuery 2.2.3 -->
 <!-- Bootstrap 3.3.6 -->
 <!-- iCheck -->
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script>
 
     //是否能够点击（默认是）
@@ -105,13 +113,13 @@
                 str += ". ";
             },600);
 
-        $.post("/Leasing_management_system_web_war_exploded/user/sendResetRef",$("form").serialize(),function (data) {
+        $.post("${pageContext.servletContext.contextPath}/user/sendResetRef",$("form").serialize(),function (data) {
             if(data!=null){
                 if(data.flag==true){   //发送成功
                     clearInterval(interval);    //停止显示发送中...
                     $('#send').text(baseText);//显示原来的字体
                     $('#beforeSend').css('display','none');    //隐藏发送页面
-                   $('#afterSend').css('display','block');    //显示发送成功的页面
+                    $('#afterSend').css('display','block');    //显示发送成功的页面
                     enableClick = true; //用户可点击
                 }else{  //发送失败
                     clearInterval(interval);    //停止显示发送中...

@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: zpf
+  Date: 2020/3/8
+  Time: 20:44
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
@@ -16,28 +24,28 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../plugins/iCheck/square/blue.css">
-    <link rel="stylesheet" href="../plugins/morris/morris.css">
-    <link rel="stylesheet" href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
-    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
-    <link rel="stylesheet" href="../plugins/treeTable/jquery.treetable.css">
-    <link rel="stylesheet" href="../plugins/treeTable/jquery.treetable.theme.default.css">
-    <link rel="stylesheet" href="../plugins/select2/select2.css">
-    <link rel="stylesheet" href="../plugins/colorpicker/bootstrap-colorpicker.min.css">
-    <link rel="stylesheet" href="../plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../plugins/ionslider/ion.rangeSlider.css">
-    <link rel="stylesheet" href="../plugins/ionslider/ion.rangeSlider.skinNice.css">
-    <link rel="stylesheet" href="../plugins/bootstrap-slider/slider.css">
-    <link rel="stylesheet" href="../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/morris/morris.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/treeTable/jquery.treetable.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/treeTable/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/select2/select2.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/colorpicker/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/ionslider/ion.rangeSlider.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/ionslider/ion.rangeSlider.skinNice.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/bootstrap-slider/slider.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -49,7 +57,7 @@
 
 
         <!-- Logo -->
-        <a href="all-admin-index.html" class="logo">
+        <a href="${pageContext.servletContext.contextPath}/index" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>数据</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -85,13 +93,13 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="${pageContext.servletContext.contextPath}/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <span class="hidden-xs">张猿猿</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="${pageContext.servletContext.contextPath}/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                 <p>
                                     张猿猿 - 数据管理员
                                     <small>最后登录 11:20AM</small>
@@ -136,7 +144,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="${pageContext.servletContext.contextPath}/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>张猿猿</p>
@@ -160,7 +168,7 @@
             <ul class="sidebar-menu">
                 <li class="header">菜单</li>
 
-                <li id="admin-index"><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a>
+                <li id="admin-index"><a href="${pageContext.servletContext.contextPath}/index"><i class="fa fa-dashboard"></i> <span>首页</span></a>
                 </li>
 
                 <!-- 菜单 -->
@@ -176,7 +184,7 @@
                     <ul class="treeview-menu">
 
                         <li id="admin-login">
-                            <a href="all-admin-login.html">
+                            <a href="all-admin-login.jsp">
                                 <i class="fa fa-circle-o"></i> 查看房屋
                             </a>
                         </li>
@@ -192,7 +200,7 @@
     <!-- 导航侧栏 /-->
 
     <!-- 内容区域 -->
-    <!-- @@master = admin-layout.html-->
+    <!-- @@master = admin-layout.jsp-->
     <!-- @@block = content -->
 
     <div class="content-wrapper">
@@ -204,7 +212,7 @@
                 <small>数据列表</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li><a href="${pageContext.servletContext.contextPath}/index"><i class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a href="#">数据管理</a></li>
                 <li class="active">数据列表</li>
             </ol>
@@ -488,51 +496,51 @@
 </div>
 
 
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/jQueryUI/jquery-ui.min.js"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
-<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/raphael/raphael-min.js"></script>
-<script src="../plugins/morris/morris.min.js"></script>
-<script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="../plugins/knob/jquery.knob.js"></script>
-<script src="../plugins/daterangepicker/moment.min.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
-<script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="../plugins/fastclick/fastclick.js"></script>
-<script src="../plugins/iCheck/icheck.min.js"></script>
-<script src="../plugins/adminLTE/js/app.min.js"></script>
-<script src="../plugins/treeTable/jquery.treetable.js"></script>
-<script src="../plugins/select2/select2.full.min.js"></script>
-<script src="../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<script src="../plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
-<script src="../plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-<script src="../plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
-<script src="../plugins/bootstrap-markdown/js/markdown.js"></script>
-<script src="../plugins/bootstrap-markdown/js/to-markdown.js"></script>
-<script src="../plugins/ckeditor/ckeditor.js"></script>
-<script src="../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script src="../plugins/chartjs/Chart.min.js"></script>
-<script src="../plugins/flot/jquery.flot.min.js"></script>
-<script src="../plugins/flot/jquery.flot.resize.min.js"></script>
-<script src="../plugins/flot/jquery.flot.pie.min.js"></script>
-<script src="../plugins/flot/jquery.flot.categories.min.js"></script>
-<script src="../plugins/ionslider/ion.rangeSlider.min.js"></script>
-<script src="../plugins/bootstrap-slider/bootstrap-slider.js"></script>
-<script src="../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
-<script src="../plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/raphael/raphael-min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/morris/morris.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/knob/jquery.knob.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/daterangepicker/moment.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/fastclick/fastclick.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/iCheck/icheck.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/adminLTE/js/app.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/treeTable/jquery.treetable.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/select2/select2.full.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-markdown/js/markdown.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-markdown/js/to-markdown.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/chartjs/Chart.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/flot/jquery.flot.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/flot/jquery.flot.categories.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/ionslider/ion.rangeSlider.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <script>
     $(document).ready(function () {
         // 选择框

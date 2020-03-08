@@ -1,8 +1,8 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
   <!--spring-->
   <context-param>
@@ -53,4 +53,8 @@
     <url-pattern>/</url-pattern>  <!--不拦截jsp-->
   </servlet-mapping>
 
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/pages/404.jsp</location>
+  </error-page>
 </web-app>

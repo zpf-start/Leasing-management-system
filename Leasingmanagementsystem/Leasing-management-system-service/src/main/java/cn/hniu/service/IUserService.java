@@ -2,6 +2,7 @@ package cn.hniu.service;
 
 import cn.hniu.domain.OperationInfo;
 import cn.hniu.domain.User;
+import cn.hniu.domain.UserLogin;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,7 +26,7 @@ public interface IUserService {
      * @param user
      * @return
      */
-    OperationInfo login(User user,String loginValidateCode,String autoLogin,HttpServletResponse response);
+    OperationInfo login(User user, UserLogin userLogin, HttpServletResponse response);
 
     void loginValidateCode(HttpServletResponse response, String number) throws Exception;
 
@@ -40,4 +41,5 @@ public interface IUserService {
     OperationInfo resetPassword(Integer userId, String password);
 
     boolean autoLogin();
+
 }

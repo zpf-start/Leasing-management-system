@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Leasingmanagementsystemservice" />
         <module name="Leasingmanagementsystemdomain" />
         <module name="Leasingmanagementsystemdao" />
-        <module name="Leasing-management-system-domain" />
+        <module name="Leasingmanagementsystemservice" />
         <module name="Leasingmanagementsystemutils" />
+        <module name="Leasing-management-system-domain" />
         <module name="Leasing-management-system-dao" />
         <module name="Leasing-management-system-web" />
         <module name="Leasing-management-system-service" />

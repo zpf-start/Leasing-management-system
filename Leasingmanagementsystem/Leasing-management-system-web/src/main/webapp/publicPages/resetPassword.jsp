@@ -31,17 +31,17 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/plugins/iCheck/square/blue.css">
 </head>
 
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="all-admin-index.html"><b>租聘信息</b>后台管理系统</a>
+        <a href="${pageContext.servletContext.contextPath}/index"><b>租聘信息</b>后台管理系统</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -71,9 +71,9 @@
 <!-- jQuery 2.2.3 -->
 <!-- Bootstrap 3.3.6 -->
 <!-- iCheck -->
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/iCheck/icheck.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/plugins/iCheck/icheck.min.js"></script>
 <script>
 
     //表单中不能输入空格
@@ -97,13 +97,13 @@
             alert("密码不一致");
             return false;
         }
-        $.post("/Leasing_management_system_web_war_exploded/user/resetPassword",$("form").serialize(),function (data) {
+        $.post("${pageContext.servletContext.contextPath}/user/resetPassword",$("form").serialize(),function (data) {
             if(data!=null){
                 if(data.flag==true){   //修改成功
                     //显示操作正确信息
                     alert(data.successInfo);
                     //跳转到登录页面
-                    location.href="/Leasing_management_system_web_war_exploded/publicPages/login.html"
+                    location.href="${pageContext.servletContext.contextPath}/login.jsp"
                 }else{  //登录失败
                     //显示操作错误信息
                     alert(data.errorInfo);

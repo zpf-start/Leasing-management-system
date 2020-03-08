@@ -3,6 +3,7 @@ package cn.hniu.service.impl;
 import cn.hniu.dao.IUserDao;
 import cn.hniu.domain.OperationInfo;
 import cn.hniu.domain.User;
+import cn.hniu.domain.UserLogin;
 import cn.hniu.service.IUserService;
 import cn.hniu.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Service
@@ -72,14 +74,26 @@ public class UserService implements IUserService {
     }
 
     //用户登录
-    public OperationInfo login(User user,String loginValidateCode,String autoLogin,HttpServletResponse response) {
+    public OperationInfo login(User user, UserLogin userLogin, HttpServletResponse response) {
         //返回的操作信息
         OperationInfo operationInfo = null;
+        //获取session中的用户信息
+        User isLoginUser = (User)request.getSession().getAttribute("user");
+        //判断是否有用户登录过
+        if(isLoginUser!=null){  //非空验证
+            //该用户登录过
+            //session中的isUser和本次请求中user的用户名和密码相同    则该用户已登录
+            if(user.getUsername().equals(isLoginUser.getUsername()) == true  //该用户已登录
+               && user.getPassword().equals(isLoginUser.getPassword()) == true){
+                operationInfo = new OperationInfo(true,null,null);
+            }
+        }
+        //该用户未登录
         //获取session总用户的验证码
         String validateCode = (String)request.getSession().getAttribute("loginValidateCode");
         //判断验证码是否正确
         if(validateCode!=null && !validateCode.equals("")){ //session中验证码存在
-            if(validateCode.equalsIgnoreCase(loginValidateCode)){ //验证码匹配
+            if(validateCode.equalsIgnoreCase(userLogin.getLoginValidateCode())){ //验证码匹配
                 //根据用户名或邮箱和密码查询用户信息
                 User findUser = userDao.findByUsernameAndPasswordOrEmailAndPassword(user.getUsername(), user.getPassword(), user.getUsername(), user.getPassword());
                 if(findUser!=null){ //登录成功
@@ -90,7 +104,7 @@ public class UserService implements IUserService {
                     //2.删除session中的验证码
                     session.removeAttribute("loginValidateCode");
                     //3.判断是否下次自动登录
-                    if(autoLogin!=null&& autoLogin!=""){
+                    if(userLogin.getAutoLogin()!=null&& userLogin.getAutoLogin()!=""){    //下次自动登录
                         //创建cookie
                         Cookie cookie = new Cookie("user",findUser.getUserId().toString()); //将用户的 id 以user为key存入cookie
                         cookie.setPath("/");    //设置tomcat任意地址都携带 cookie
@@ -108,6 +122,16 @@ public class UserService implements IUserService {
             }
         }else{//session中验证码不存在
             operationInfo = new OperationInfo(false,"请刷新验证码",null);
+        }
+
+        //用户登陆失败
+        if(operationInfo.getFlag()==false){
+            //将用户的原始信息返回
+            ArrayList<Object> objects = new ArrayList<Object>();
+            objects.add(user);
+            objects.add(userLogin);
+            //添加到返回的对象中
+            operationInfo.setObject(objects);
         }
         return operationInfo;
     }
@@ -158,8 +182,8 @@ public class UserService implements IUserService {
             jedis.setex(key,10*60,user.getUserId().toString());
             //4.发送重置密码的链接
             MailUtils.sendMail(email,
-                    "<a href='http://localhost:8080/Leasing_management_system_web_war_exploded/user/resetPasswordFindUser?key="+
-                            key+"'>http://localhost:8080/Leasing_management_system_web_war_exploded/user/resetPasswordFindUser?key="+key+"</a><br/>" +
+                    "<a href='http://localhost:8080/"+request.getServletContext().getContextPath()+"/user/resetPasswordFindUser?key="+
+                            key+"'>http://localhost:8080/"+request.getServletContext().getContextPath()+"/user/resetPasswordFindUser?key="+key+"</a><br/>" +
                             "请点击链接重置密码您的密码，该链接10分钟后失效",
                     "租聘后台管理系统-重置密码");
             //返回操作信息
@@ -192,8 +216,11 @@ public class UserService implements IUserService {
             user.setUserId(userId);
             user.setPassword(password);
             userDao.save(user);//保存用户
+            //删除用户的session
+            request.getSession().removeAttribute("user");
             //返回密码修改成功信息
             operationInfo = new OperationInfo(true,null,"密码修改成功");
+
         }else{  //不存在用户
             //返回修改失败操作信息
             operationInfo = new OperationInfo(true,"密码修改失败",null);

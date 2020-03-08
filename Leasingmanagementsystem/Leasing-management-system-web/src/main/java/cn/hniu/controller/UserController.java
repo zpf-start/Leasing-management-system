@@ -2,6 +2,7 @@ package cn.hniu.controller;
 
 import cn.hniu.domain.OperationInfo;
 import cn.hniu.domain.User;
+import cn.hniu.domain.UserLogin;
 import cn.hniu.service.IUserService;
 import cn.hniu.utils.ValidateCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private HttpServletRequest request;
 
     //用户注册
     @ResponseBody
@@ -30,20 +34,21 @@ public class UserController {
         return operationInfo;
     }
 
+    //用户登录 使用表单提交的方式
+    @RequestMapping(value = "/loginInner",method = RequestMethod.POST)
+    public String login(User user, UserLogin userLogin, HttpServletResponse response) throws Exception{
+        //调用用户登录Service
+        OperationInfo operationInfo = userService.login(user,userLogin,response);
+        //将操作信息存入session
+        request.getSession().setAttribute("loginFailed",operationInfo);
+        return "redirect:http://localhost:8080"+request.getServletContext().getContextPath()+"/login.jsp";
+    }
+
     //用户注册时发送验证码到邮箱
     @ResponseBody
     @RequestMapping(value = "/saveNameAndCodeToRedisRegister",method = RequestMethod.POST)
     public OperationInfo saveNameAndCodeToRedis(String email) throws Exception {
         OperationInfo operationInfo = userService.saveNameAndCodeToRedis(email);
-        return operationInfo;
-    }
-
-    //用户登录
-    @ResponseBody
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public OperationInfo login(User user,@RequestParam(name = "loginValidateCode",required = true) String loginValidateCode, String autoLogin,HttpServletResponse response) throws Exception{
-        //调用用户登录Service
-        OperationInfo operationInfo = userService.login(user,loginValidateCode,autoLogin,response);
         return operationInfo;
     }
 
@@ -88,7 +93,7 @@ public class UserController {
             modelAndView.addObject("user",userInfo);    //添加用户信息
             modelAndView.setViewName("/publicPages/resetPassword.jsp");    //添加修改密码视图
         }else{
-            modelAndView.setViewName("/publicPages/invalidResetRef.html");//链接已失效视图
+            modelAndView.setViewName("/WEB-INF/pages/invalidResetRef.jsp");//链接已失效视图
         }
         return modelAndView;
     }
@@ -101,18 +106,4 @@ public class UserController {
         return operationInfo;
     }
 
-    //用户自动登录
-    @RequestMapping(value = "/autoLogin")
-    public ModelAndView autoLogin(){
-        ModelAndView modelAndView = null;
-        boolean flag = userService.autoLogin();
-        if(flag == true){ //登录成功
-            //跳转到主页
-            modelAndView.setViewName("/pages/index.html");
-        }else{  //登录失败
-            //跳转到登录页面
-            modelAndView.setViewName("/publicPages/login.html");
-        }
-        return modelAndView;
-    }
 }
